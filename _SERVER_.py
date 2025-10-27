@@ -29,7 +29,7 @@ def index():
 def generate_qr():
     urn = request.args.get("urn", "").strip()
     if not urn:
-        return "❌ URN missing!", 400
+        return " URN missing!", 400
 
     img = qrcode.make(urn)
     buf = io.BytesIO()
@@ -38,4 +38,5 @@ def generate_qr():
     return send_file(buf, mimetype="image/png")
 
 if __name__ == "__main__":
+
     app.run(host="0.0.0.0", port=5000)
